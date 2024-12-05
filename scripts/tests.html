@@ -10,13 +10,21 @@
 
 <script type="module">
 
-import { sequence } from "./array.mjs";
+import { sequence, increment, decrement } from "./array.mjs";
 import { Month, Calendar } from "./calendar.mjs";
 import { Point, toRadian } from "./geometry.mjs";
 import { Random } from "./util.mjs";
 import { MoveTo, LineTo, QuadraticCurve, CubicCurve, ClosePath, Path, SVG } from "./svg.mjs";
 
+import { test as svgTest } from "./svg-tests.mjs";
+
+svgTest();
+
 console.assert(sequence(7).toString() === "0,1,2,3,4,5,6", "sequence(7)");
+
+console.assert(sequence(5, increment(2)).toString() === "2,3,4,5,6", "sequence(5)");
+
+console.assert(sequence(6, decrement(3)).toString() === "3,2,1,0,-1,-2", "sequence(6)");
 
 console.assert(new Point(3, 8).toString() === "(3, 8)", "Point(3, 8)");
 
