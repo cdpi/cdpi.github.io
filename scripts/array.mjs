@@ -1,5 +1,13 @@
 
 /**
+ * @param {*} initialValue
+ */
+function initialize(initialValue)
+	{
+	return () => initialValue;
+	}
+
+/**
  * @param {Number} start
  */
 function increment(start = 0)
@@ -24,23 +32,22 @@ function sequence(count, generator = increment(0))
 	return Array.from({length: count}, generator);
 	}
 
+// Additonne des tableaux dans array.reduce. Pas top comme nom mais ça reste privé ;-)
+const _SUM = (accumulator, array) => accumulator.map((value, index) => value + array[index]);
+
 /**
- * Créer une série de nombre (suite 0, 1, 2,... pour l'instant).
- * 
- * @param {Number} count
- * 
- * @returns {Number[]}
+ * @param {[][]} arrays
  */
-/*
-function sequence(count)
+function sum(arrays)
 	{
-	return Array.from({length: count}, _KEY);
+	return arrays.reduce(_SUM, sequence(arrays[0].length, initialize(0)));
 	}
-*/
 
 export
 	{
+	initialize,
 	increment,
 	decrement,
-	sequence
+	sequence,
+	sum
 	};
