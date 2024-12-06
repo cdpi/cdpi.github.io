@@ -14,8 +14,10 @@ div
 	{
 	background-color: yellowgreen;
 	background-clip: content-box;
+	background-clip: initial;
 
 	box-sizing: border-box;
+	box-sizing: initial;
 
 	width: 40%;
 	height: 300px;
@@ -52,9 +54,15 @@ div
 
 <script type="module">
 
-import { isBackgroundClipContentBox, isBoxSizingBorderBox, borders, margins, paddings, devGetFinalPosition } from "./css.mjs";
+import { isBackgroundClipContentBox, isBoxSizingBorderBox, borders, margins, paddings, getBackgroundRect } from "./css.mjs";
 
 let div = document.querySelector("div");
+
+div.addEventListener("click", e =>
+	{
+	console.log(e);
+	console.log(getBackgroundRect(div));
+	});
 
 let style = window.getComputedStyle(div);
 
@@ -64,12 +72,6 @@ console.assert(isBoxSizingBorderBox(style) === true, "isBoxSizingBorderBox");
 console.assert(margins(style).join(",") === "1,80,16,24", "margins");
 console.assert(paddings(style).join(",") === "3,48,32,40", "paddings");
 console.assert(borders(style).join(",") === "2,4,8,16", "borders");
-
-console.debug(borders(style));
-console.debug(margins(style));
-console.debug(paddings(style));
-
-console.debug(devGetFinalPosition(div));
 
 </script>
 

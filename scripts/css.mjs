@@ -46,19 +46,27 @@ const paddings = style =>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const devGetFinalPosition = (element) =>
+const getBackgroundRect = (element) =>
 	{
+	let style = window.getComputedStyle(element);
+
 	let rect = element.getBoundingClientRect();
 
 	let x = rect.left + window.scrollX;
 	let y = rect.top + window.scrollY;
 
-	//return [x, y];
+	if (isBoxSizingContentBox(style))
+		{
+		}
+
+	if (isBackgroundClipContentBox(style))
+		{
+		}
+
+	return [x, y];
+
 	//window.scrollY + document.querySelector('#elementId').getBoundingClientRect().top // Y
-
-	let style = window.getComputedStyle(element);
-
-	return sum([borders(style), margins(style), paddings(style)]);
+	//return sum([borders(style), margins(style), paddings(style)]);
 	};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -73,6 +81,5 @@ export
 	borders,
 	margins,
 	paddings,
-
-	devGetFinalPosition
+	getBackgroundRect
 	};
