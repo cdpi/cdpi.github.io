@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Tests CSS</title>
+<style>
+
+:root
+	{
+	font-size: 16px;;
+	}
+
+div
+	{
+	background-color: yellowgreen;
+	background-clip: content-box;
+	background-clip: initial;
+
+	box-sizing: border-box;
+	box-sizing: initial;
+
+	width: 40%;
+	height: 300px;
+
+	margin-top: 1px;
+	margin-right: 5em;
+	margin-bottom: 1rem;
+	margin-left: 1.5em;
+
+	padding-top: 3px;
+	padding-right: 3em;
+	padding-bottom: 2rem;
+	padding-left: 2.5em;
+
+	border-top: 2px solid black;
+	border-right: calc(1em / 4) solid black;
+	border-bottom: .5rem solid black;
+	border-left: 1em solid black;
+	}
+
+</style>
+</head>
+<body>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<div>DIV</div>
+
+<script type="module">
+
+import { isBackgroundClipContentBox, isBoxSizingBorderBox, borders, margins, paddings, getBackgroundRect } from "./css.mjs";
+
+let div = document.querySelector("div");
+
+div.addEventListener("click", e =>
+	{
+	console.log(e);
+	console.log(getBackgroundRect(div));
+	});
+
+let style = window.getComputedStyle(div);
+
+console.assert(isBackgroundClipContentBox(style) === true, "isBackgroundClipContentBox");
+console.assert(isBoxSizingBorderBox(style) === true, "isBoxSizingBorderBox");
+
+console.assert(margins(style).join(",") === "1,80,16,24", "margins");
+console.assert(paddings(style).join(",") === "3,48,32,40", "paddings");
+console.assert(borders(style).join(",") === "2,4,8,16", "borders");
+
+</script>
+
+</body>
+</html>
