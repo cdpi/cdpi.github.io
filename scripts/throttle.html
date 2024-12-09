@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Tests CSS</title>
+	<title>Test throttle</title>
 </head>
 <body>
 
@@ -10,7 +10,15 @@
 
 import { throttle } from "./throttle.mjs";
 
-console.assert();
+document.addEventListener("mousemove", throttle(500, e =>
+	{
+	console.debug("500: " + e.timeStamp);
+	}));
+
+document.addEventListener("mousemove", throttle(2000, e =>
+	{
+	console.debug("2sec: " + e.timeStamp);
+	}));
 
 </script>
 
