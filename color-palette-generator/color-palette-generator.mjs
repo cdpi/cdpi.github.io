@@ -2,7 +2,7 @@
 //@ts-check
 
 //@ts-ignore
-import { ColorSelector } from "https://cdn.jsdelivr.net/gh/cdpi/js/color.mjs";
+import { ColorSelector } from "https://cdn.jsdelivr.net/gh/cdpi/js/dist/color.mjs";
 
 export class ColorPaletteGenerator extends ColorSelector
 	{
