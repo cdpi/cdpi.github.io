@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Test CDPI JS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+video
+	{
+	width: 50vw;
+	height: 50vh;
+	}
+</style>
+</head>
+<body>
+
+<video id="stream"></video>
+
+<script type="module">
+
+import { getVideoStream } from "https://cdn.jsdelivr.net/gh/cdpi/js/dist/html.js";
+
+async function displayVideoStream()
+	{
+	document.querySelector("#stream").srcObject = await getVideoStream("environment", 600, 800);
+	}
+
+document.addEventListener("DOMContentLoaded", displayVideoStream, {once: true});
+
+</script>
+
+</body>
+</html>
