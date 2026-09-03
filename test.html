@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Test CDPI JS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<script type="module">
+
+//import { ThemeManager } from "https://cdn.jsdelivr.net/gh/cdpi/js@HEAD/dist/css.js";
+//import { ThemeManager } from "https://cdn.jsdelivr.net/gh/cdpi/js/dist/css.js";
+import { ThemeManager } from "cdn.jsdelivr.net/gh/cdpi/js/dist/css.js";
+
+class App extends ThemeManager
+	{
+	constructor()
+		{
+		super();
+		}
+
+	onSystemThemeChange(isDarkMode)
+		{
+		document.body.style.backgroundColor = isDarkMode ? "#000" : "#fff";
+		}
+	}
+
+</script>
+
+</body>
+</html>
